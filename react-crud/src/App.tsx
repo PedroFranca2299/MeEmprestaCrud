@@ -1,21 +1,17 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-} from "@chakra-ui/react";
+import * as React from "react";
+import { ChakraProvider, Box, VStack, theme } from "@chakra-ui/react";
+import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import { Logo } from "./Logo";
+import Restaurante from "./restaurante";
 
-function App() {
-  return (
-    <Breadcrumb separator="-">
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">Cadastro de Opções</BreadcrumbLink>
-      </BreadcrumbItem>
-
-      <BreadcrumbItem>
-        <BreadcrumbLink href="#">Monte a votação</BreadcrumbLink>
-      </BreadcrumbItem>
-    </Breadcrumb>
-  );
-}
-export default App;
+export const App = () => (
+  <ChakraProvider theme={theme}>
+    <Box fontSize="xl">
+      <ColorModeSwitcher justifySelf="flex-end" />
+      <VStack spacing={8}>
+        <Logo h="10vmin" pointerEvents="none" />
+      </VStack>
+      <Restaurante />
+    </Box>
+  </ChakraProvider>
+);
