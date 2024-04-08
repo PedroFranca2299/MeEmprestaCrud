@@ -5,6 +5,7 @@ import { RestauranteType } from "../api";
 import { deleteRestaurante, getRestaurantes } from "../api/restaurante";
 import RestauranteForm from "../components/RestauranteForm";
 import RestauranteModal from "../components/RestauranteModal";
+import RestauranteSorteio from "../components/RestauranteSorteio";
 import RestauranteTable from "../components/RestauranteTable";
 
 const Restaurante = () => {
@@ -44,7 +45,7 @@ const Restaurante = () => {
   return (
     <Box textAlign="center" margin="30px auto">
       {isLoading ? <div className="loading-lazy"></div> : ""}
-      <RestauranteSorteio />
+      <RestauranteSorteio data={restaurantes} />
       <RestauranteForm
         setIsLoading={setIsLoading}
         handleGetRestaurantes={handleGetRestaurantes}
