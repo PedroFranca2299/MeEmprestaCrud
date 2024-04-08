@@ -2,7 +2,7 @@ Este projeto é um CRUD, feito usando as seguintes tecnologias:
 
 API (backend) em Laravel.
 
-Frontend em React, usando ChakraUI, react-hooks para os formulários, e react-toastify para notificações.
+Frontend em React, usando ChakraUI, react-hook-form para os formulários, e react-toastify para notificações.
 
 O Banco de dados usado foi o MySQL.
 
