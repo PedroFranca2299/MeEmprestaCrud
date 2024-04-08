@@ -45,10 +45,25 @@ class RestauranteController extends Controller
 
     public function edit($id)
     {
+        $restaurante = Restaurante::find($id);
+        return response()->json([
+            "status" => 200,
+            "restaurante" => $restaurante,
+        ]);
     }
 
     public function store($id, Request $request)
     {
+        $restaurante = Restaurante::find($id);
+
+        $restaurante->name = $request->input("name");
+
+        $restaurante->save();
+
+        return response()->json([
+            "status" => 200,
+            "message" => "Restaurante atualizado com sucesso!",
+        ]);
     }
 
     public function destroy($id)

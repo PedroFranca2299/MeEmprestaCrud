@@ -13,7 +13,11 @@ import {
 import React from "react";
 import { RestauranteTableType } from "./RestauranteTable.type";
 
-const RestauranteTable = ({ data }: RestauranteTableType) => {
+const RestauranteTable = ({
+  data,
+  onOpen,
+  setIdRestaurante,
+}: RestauranteTableType) => {
   return (
     <TableContainer maxWidth="700px" m="40px auto">
       <Table variant="striped" colorScheme="teal">
@@ -29,7 +33,14 @@ const RestauranteTable = ({ data }: RestauranteTableType) => {
             <Tr key={item.id}>
               <Td>{item.name}</Td>
               <Td>
-                <Button>Editar</Button>
+                <Button
+                  onClick={() => {
+                    onOpen();
+                    setIdRestaurante(item.id);
+                  }}
+                >
+                  Editar
+                </Button>
               </Td>
               <Td>
                 <Button>Deletar</Button>

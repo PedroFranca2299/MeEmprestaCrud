@@ -1,15 +1,21 @@
-import { Box, Spinner } from "@chakra-ui/react";
+import { Box, Spinner, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 import { ToastContainer } from "react-toastify";
 import { RestauranteType } from "../api";
 import { getRestaurantes } from "../api/restaurante";
 import RestauranteForm from "../components/RestauranteForm";
+import RestauranteModal from "../components/RestauranteModal";
 import RestauranteTable from "../components/RestauranteTable";
 
 const Restaurante = () => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [isGetData, setIsGetData] = React.useState<boolean>(false);
   const [restaurantes, setRestaurantes] = React.useState<RestauranteType[]>([]);
+  const [idRestaurante, setIdRestaurante] = React.useState<number | undefined>(
+    undefined,
+  );
+
+  const { isOpen, onClose, onOpen } = useDisclosure();
 
   const handleGetRestaurantes = async () => {
     setIsGetData(true);
@@ -32,8 +38,20 @@ const Restaurante = () => {
         setIsLoading={setIsLoading}
         handleGetRestaurantes={handleGetRestaurantes}
       />
+
+      <RestauranteModal
+        isOpen={isOpen}
+        onClose={onClose}
+        idRestaurante={idRestaurante}
+        handleGetRestaurantes={handleGetRestaurantes}
+      />
+
       {!isGetData ? (
-        <RestauranteTable data={restaurantes} />
+        <RestauranteTable
+          data={restaurantes}
+          onOpen={onOpen}
+          setIdRestaurante={setIdRestaurante}
+        />
       ) : (
         <Spinner size="xl" />
       )}
