@@ -9,11 +9,11 @@ export const getRestauranteById = (id: number) => {
   return axios.get(`/restaurantes/${id}`);
 };
 
-export const createRestaurante = (data: RestauranteFormType) => {
+export const createRestaurante = (data: any) => {
   return axios.post("/restaurantes/create", data);
 };
 
-export const updateRestaurante = (id: number, data: RestauranteFormType) => {
+export const updateRestaurante = (id: number, data: any) => {
   return axios.post(`/restaurantes/update/${id}`, data);
 };
 
