@@ -26,7 +26,7 @@ Route::post("/restaurantes/update/{id}", [
     RestauranteController::class,
     "store",
 ]);
-Route::delete("/restaurantes/delete{id}", [
+Route::delete("/restaurantes/delete/{id}", [
     RestauranteController::class,
     "destroy",
 ]);

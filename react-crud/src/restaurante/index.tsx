@@ -1,8 +1,8 @@
 import { Box, Spinner, useDisclosure } from "@chakra-ui/react";
 import React from "react";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { RestauranteType } from "../api";
-import { getRestaurantes } from "../api/restaurante";
+import { deleteRestaurante, getRestaurantes } from "../api/restaurante";
 import RestauranteForm from "../components/RestauranteForm";
 import RestauranteModal from "../components/RestauranteModal";
 import RestauranteTable from "../components/RestauranteTable";
@@ -27,6 +27,16 @@ const Restaurante = () => {
     }
   };
 
+  const handleDeleteRestaurante = async (id: any) => {
+    setIsGetData(true);
+
+    const res = await deleteRestaurante(Number(id));
+    if (res.data.status == 200) {
+      toast.success(res.data.message);
+      handleGetRestaurantes();
+    }
+  };
+
   React.useEffect(() => {
     handleGetRestaurantes();
   }, []);
@@ -34,6 +44,7 @@ const Restaurante = () => {
   return (
     <Box textAlign="center" margin="30px auto">
       {isLoading ? <div className="loading-lazy"></div> : ""}
+      <RestauranteSorteio />
       <RestauranteForm
         setIsLoading={setIsLoading}
         handleGetRestaurantes={handleGetRestaurantes}
@@ -51,6 +62,7 @@ const Restaurante = () => {
           data={restaurantes}
           onOpen={onOpen}
           setIdRestaurante={setIdRestaurante}
+          handleDeleteRestaurante={handleDeleteRestaurante}
         />
       ) : (
         <Spinner size="xl" />

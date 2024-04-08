@@ -5,4 +5,5 @@ export type RestauranteTableType = {
   data: RestauranteType[];
   onOpen: () => void;
   setIdRestaurante: Dispatch<SetStateAction<number | undefined>>;
+  handleDeleteRestaurante: (id: any) => void;
 };

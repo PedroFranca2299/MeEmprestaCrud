@@ -68,5 +68,11 @@ class RestauranteController extends Controller
 
     public function destroy($id)
     {
+        $restaurante = Restaurante::find($id);
+        $restaurante->delete();
+        return response()->json([
+            "status" => 200,
+            "message" => "Restaurante deletado com sucesso",
+        ]);
     }
 }

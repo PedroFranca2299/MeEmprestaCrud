@@ -17,11 +17,11 @@ const RestauranteTable = ({
   data,
   onOpen,
   setIdRestaurante,
+  handleDeleteRestaurante,
 }: RestauranteTableType) => {
   return (
     <TableContainer maxWidth="700px" m="40px auto">
       <Table variant="striped" colorScheme="teal">
-        <TableCaption>Imperial to metric conversion factors</TableCaption>
         <Thead>
           <Tr>
             <Th>Nome do Restaurante</Th>
@@ -43,7 +43,9 @@ const RestauranteTable = ({
                 </Button>
               </Td>
               <Td>
-                <Button>Deletar</Button>
+                <Button onClick={() => handleDeleteRestaurante(item.id)}>
+                  Deletar
+                </Button>
               </Td>
             </Tr>
           ))}
