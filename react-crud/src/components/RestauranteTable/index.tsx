@@ -1,4 +1,5 @@
 import {
+  Button,
   Table,
   TableCaption,
   TableContainer,
@@ -10,8 +11,9 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import React from "react";
+import { RestauranteTableType } from "./RestauranteTable.type";
 
-const RestauranteTable = () => {
+const RestauranteTable = ({ data }: RestauranteTableType) => {
   return (
     <TableContainer maxWidth="700px" m="40px auto">
       <Table variant="striped" colorScheme="teal">
@@ -23,18 +25,20 @@ const RestauranteTable = () => {
           </Tr>
         </Thead>
         <Tbody>
-          <Tr>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-            <Td isNumeric>25.4</Td>
-          </Tr>
+          {data.map((item) => (
+            <Tr key={item.id}>
+              <Td>{item.name}</Td>
+              <Td>
+                <Button>Editar</Button>
+              </Td>
+              <Td>
+                <Button>Deletar</Button>
+              </Td>
+            </Tr>
+          ))}
         </Tbody>
         <Tfoot>
-          <Tr>
-            <Th>To convert</Th>
-            <Th>into</Th>
-            <Th isNumeric>multiply by</Th>
-          </Tr>
+          <Tr></Tr>
         </Tfoot>
       </Table>
     </TableContainer>

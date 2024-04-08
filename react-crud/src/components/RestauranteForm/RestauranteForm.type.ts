@@ -5,6 +5,6 @@ export type FormType = {
 };
 
 export type RestauranteFormType = {
-  handleGetStudents: () => void;
+  handleGetRestaurantes: () => void;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };

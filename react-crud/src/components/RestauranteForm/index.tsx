@@ -5,7 +5,10 @@ import { toast } from "react-toastify";
 import { createRestaurante } from "../../api/restaurante";
 import { FormType, RestauranteFormType } from "./RestauranteForm.type";
 
-const RestauranteForm = ({ setIsLoading }: any) => {
+const RestauranteForm = ({
+  setIsLoading,
+  handleGetRestaurantes,
+}: RestauranteFormType) => {
   const [errorMessages, setErrorMessages] = React.useState<any>({
     name: "",
     email: "",
@@ -24,6 +27,8 @@ const RestauranteForm = ({ setIsLoading }: any) => {
       event.target.reset();
       toast.success(response.data.message);
       setErrorMessages("");
+
+      handleGetRestaurantes();
     } else if (response.data.status == 402) {
       setIsLoading(false);
       setErrorMessages(response.data.errorMessages);

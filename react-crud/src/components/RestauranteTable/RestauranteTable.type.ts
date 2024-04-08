@@ -1,4 +1,5 @@
+import { RestauranteType } from "../../api";
+
 export type RestauranteTableType = {
-  id: number;
-  nome: string;
+  data: RestauranteType[];
 };
