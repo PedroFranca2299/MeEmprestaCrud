@@ -1,5 +1,3 @@
-# MeEmprestaCrud
-
 Este projeto é um CRUD, feito usando as seguintes tecnologias:
 
 API (backend) em Laravel.
